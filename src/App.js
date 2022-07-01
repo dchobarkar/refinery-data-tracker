@@ -1,5 +1,13 @@
+import React from "react";
+
+import InputForm from "./InputForm";
+
 function App() {
-  return <div>This will be the app</div>;
+  return (
+    <div>
+      <InputForm />
+    </div>
+  );
 }
 
 export default App;
