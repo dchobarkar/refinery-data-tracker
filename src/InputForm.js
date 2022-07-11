@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 
+import "./form.styles.css";
+
 const InputForm = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [psp, setPSP] = useState("");
   const [current, setCurrent] = useState("");
   const [location, setLocation] = useState("");
+  const [type, setType] = useState("");
   const [timeStamp, setTimeStamp] = useState("");
 
   useEffect(() => {
     getDateAndTime();
-    getLocation();
+    getLocationAndType();
   }, []);
 
   // Function to get date and time
@@ -28,14 +31,16 @@ const InputForm = () => {
     setTime(`${hour}:${minutes}`);
   };
 
-  // Function to get location
-  const getLocation = () => {
+  // Function to get location and type
+  const getLocationAndType = () => {
     const urlString = window.location.href;
     const url = new URL(urlString);
 
     const location = url.searchParams.get("location");
+    const type = url.searchParams.get("type");
 
     setLocation(location);
+    setType(type);
   };
 
   // Function to get current timestamp
@@ -53,33 +58,37 @@ const InputForm = () => {
     console.log(psp);
     console.log(current);
     console.log(location);
+    console.log(type);
     console.log(timeStamp);
   };
 
   return (
-    <div>
-      <form onSubmit={(e) => formHandler(e)}>
-        <label>
+    <div className="form-container">
+      <form className="form-body" onSubmit={(e) => formHandler(e)}>
+        <label className="form-label">
           Date :
           <input
+            className="form-input"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
         </label>
 
-        <label>
+        <label className="form-label">
           Time :
           <input
+            className="form-input"
             type="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
           />
         </label>
 
-        <label>
+        <label className="form-label">
           PSP :
           <input
+            className="form-input"
             type="number"
             step=".01"
             value={psp}
@@ -87,9 +96,10 @@ const InputForm = () => {
           />
         </label>
 
-        <label>
+        <label className="form-label">
           Current (Am) :
           <input
+            className="form-input"
             type="number"
             step=".01"
             value={current}
@@ -97,7 +107,7 @@ const InputForm = () => {
           />
         </label>
 
-        <input type="submit" value="Submit" />
+        <input className="form-button" type="submit" value="Submit" />
       </form>
     </div>
   );
