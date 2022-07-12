@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/BPCL-refinery/static/css/main.ddc25724.css",
+    "main.js": "/BPCL-refinery/static/js/main.951c445a.js",
+    "static/js/787.3ee406ac.chunk.js": "/BPCL-refinery/static/js/787.3ee406ac.chunk.js",
+    "index.html": "/BPCL-refinery/index.html",
+    "main.ddc25724.css.map": "/BPCL-refinery/static/css/main.ddc25724.css.map",
+    "main.951c445a.js.map": "/BPCL-refinery/static/js/main.951c445a.js.map",
+    "787.3ee406ac.chunk.js.map": "/BPCL-refinery/static/js/787.3ee406ac.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ddc25724.css",
+    "static/js/main.951c445a.js"
+  ]
+}
