@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import "./form.styles.css";
 
+const BKPLUrl =
+  "https://sheet.best/api/sheets/96b2b037-69da-4566-a3e3-79b7017298e5";
+const BPCLUrl =
+  "https://sheet.best/api/sheets/96b2b037-69da-4566-a3e3-79b7017298e5";
+
 const InputForm = () => {
+  const [success, setSuccess] = useState(false);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [psp, setPSP] = useState("");
   const [current, setCurrent] = useState("");
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");
-  const [timeStamp, setTimeStamp] = useState("");
 
   useEffect(() => {
     getDateAndTime();
@@ -43,72 +49,98 @@ const InputForm = () => {
     setType(type);
   };
 
-  // Function to get current timestamp
-  const getTimeStamp = () => {
-    setTimeStamp(new Date().toLocaleString("en-GB"));
-  };
-
   const formHandler = (e) => {
     e.preventDefault();
 
-    getTimeStamp();
+    const timeStamp = new Date().toLocaleString("en-GB");
 
-    console.log(date);
-    console.log(time);
-    console.log(psp);
-    console.log(current);
-    console.log(location);
-    console.log(type);
-    console.log(timeStamp);
+    const body = {
+      date,
+      time,
+      psp,
+      current,
+      location,
+      timeStamp,
+    };
+
+    if (type === "BKPL") {
+      axios.post(BKPLUrl, body).then((response) => {
+        setSuccess(true);
+      });
+    } else {
+      axios.post(BPCLUrl, body).then((response) => {
+        setSuccess(true);
+      });
+    }
+  };
+
+  // Function to reset all values
+  const resetValues = () => {
+    getDateAndTime();
+    setPSP("");
+    setCurrent("");
+    getLocationAndType();
+    setSuccess(false);
   };
 
   return (
     <div className="form-container">
-      <form className="form-body" onSubmit={(e) => formHandler(e)}>
-        <label className="form-label">
-          Date :
-          <input
-            className="form-input"
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </label>
+      {!success && (
+        <form className="form-body" onSubmit={(e) => formHandler(e)}>
+          <label className="form-label">
+            Date :
+            <input
+              className="form-input"
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </label>
 
-        <label className="form-label">
-          Time :
-          <input
-            className="form-input"
-            type="time"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-          />
-        </label>
+          <label className="form-label">
+            Time :
+            <input
+              className="form-input"
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            />
+          </label>
 
-        <label className="form-label">
-          PSP :
-          <input
-            className="form-input"
-            type="number"
-            step=".01"
-            value={psp}
-            onChange={(e) => setPSP(e.target.value)}
-          />
-        </label>
+          <label className="form-label">
+            PSP :
+            <input
+              className="form-input"
+              type="number"
+              step=".01"
+              value={psp}
+              onChange={(e) => setPSP(e.target.value)}
+            />
+          </label>
 
-        <label className="form-label">
-          Current (Am) :
-          <input
-            className="form-input"
-            type="number"
-            step=".01"
-            value={current}
-            onChange={(e) => setCurrent(e.target.value)}
-          />
-        </label>
+          <label className="form-label">
+            Current (Am) :
+            <input
+              className="form-input"
+              type="number"
+              step=".01"
+              value={current}
+              onChange={(e) => setCurrent(e.target.value)}
+            />
+          </label>
 
-        <input className="form-button" type="submit" value="Submit" />
-      </form>
+          <input className="form-button" type="submit" value="Submit" />
+        </form>
+      )}
+
+      {success && (
+        <div className="success-msg-container">
+          <p>The entry has been registered successfully.</p>
+          <button className="success-button" onClick={() => resetValues()}>
+            New Entry
+          </button>
+        </div>
+      )}
     </div>
   );
 };

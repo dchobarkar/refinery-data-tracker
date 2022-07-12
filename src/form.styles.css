@@ -27,6 +27,18 @@
   font-size: 16px;
 }
 
+.success-msg-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.success-msg-container .success-button {
+  width: 50%;
+  margin-top: 24px;
+  padding: 8px;
+}
+
 /* Tablet view */
 @media only screen and (min-width: 401px) and (max-width: 960px) {
   .form-container .form-body {
