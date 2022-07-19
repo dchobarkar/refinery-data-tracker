@@ -66,13 +66,19 @@ const InputForm = () => {
     };
 
     if (type === "BKPL") {
-      axios.post(BKPLUrl, body).then((response) => {
-        setSuccess(true);
-      });
+      axios
+        .post(BKPLUrl, body)
+        .then((response) => {
+          setSuccess(true);
+        })
+        .catch((error) => console.log(error));
     } else {
-      axios.post(BPCLUrl, body).then((response) => {
-        setSuccess(true);
-      });
+      axios
+        .post(BPCLUrl, body)
+        .then((response) => {
+          setSuccess(true);
+        })
+        .catch((error) => console.log(error));
     }
   };
 
@@ -81,6 +87,7 @@ const InputForm = () => {
     getDateAndTime();
     setPSP("");
     setCurrent("");
+    setVoltage("");
     getLocationAndType();
     setSuccess(false);
   };
