@@ -13,6 +13,7 @@ const InputForm = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [psp, setPSP] = useState("");
+  const [voltage, setVoltage] = useState("");
   const [current, setCurrent] = useState("");
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");
@@ -59,6 +60,7 @@ const InputForm = () => {
       time,
       psp,
       current,
+      voltage,
       location,
       timeStamp,
     };
@@ -126,6 +128,17 @@ const InputForm = () => {
               step=".01"
               value={current}
               onChange={(e) => setCurrent(e.target.value)}
+            />
+          </label>
+
+          <label className="form-label">
+            Voltage :
+            <input
+              className="form-input"
+              type="number"
+              step=".01"
+              value={voltage}
+              onChange={(e) => setVoltage(e.target.value)}
             />
           </label>
 
