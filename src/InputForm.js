@@ -4,9 +4,9 @@ import axios from "axios";
 import "./form.styles.css";
 
 const BKPLUrl =
-  "https://sheet.best/api/sheets/96b2b037-69da-4566-a3e3-79b7017298e5";
+  "https://docs.google.com/spreadsheets/d/1ry0wKFkCXMQg5bY_oSezOahIOuc6Koam0o6taDM86Vg/edit#gid=0";
 const BPCLUrl =
-  "https://sheet.best/api/sheets/96b2b037-69da-4566-a3e3-79b7017298e5";
+  "https://docs.google.com/spreadsheets/d/1T-7hgOPGrDUjiFUOPGYn8xsrED7sLfpjqdtN0roWdao/edit#gid=0";
 
 const InputForm = () => {
   const [success, setSuccess] = useState(false);
