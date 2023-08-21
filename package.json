@@ -1,6 +1,9 @@
 {
-  "name": "bpcl-refinery",
-  "version": "0.1.0",
+  "name": "refinery-data-tracker",
+  "description": "A react app to track and submit data",
+  "version": "1.0.0",
+  "author": "Darshan Chobarkar <contact@darshanwebdev.com> (https://darshanwebdev.com)",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
