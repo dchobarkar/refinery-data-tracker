@@ -5,7 +5,7 @@
    A react app to track and submit data
     <br />
     <br />
-    <a href="https://github.com/dchobarkar/refinery-data-tracker">View Demo</a>
+    <a href="https://dchobarkar.github.io/refinery-data-tracker/">View Demo</a>
     ·
     <a href="https://github.com/dchobarkar/refinery-data-tracker/issues">Report Bug</a>
     ·
